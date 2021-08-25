@@ -11,23 +11,29 @@ intents:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "嘿，最近怎么样呀？"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
+  - text: "让我们来庆祝一下！"
     image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "有帮到你吗？"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "好的，继续加油！"
 
   utter_goodbye:
   - text: "Bye"
+  - text: "拜"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "我是小天，一个能帮助你的机器人🤖"
+
+  utter_default:
+  - text: "不好意思，你这个问题太高深啦，我暂时还回答不上来，我会继续加油的"
+
+
 
 session_config:
   session_expiration_time: 60
