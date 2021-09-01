@@ -1,1 +1,40 @@
 version: "2.0"
+
+nlu:
+  - intent: query_domitary
+    examples: |
+      - 天津大学有多少宿舍
+      - 天大有哪些宿舍
+      - 有多少宿舍
+      - 有哪些宿舍
+      - 有什么宿舍
+
+
+  - intent: query_domitary_route
+    examples: |
+      - [格园](domitary)在哪儿呢
+      - [格园](domitary)怎么走
+      - [知园](domitary)在哪儿呢
+      - [知园](domitary)怎么走
+      - [诚园](domitary)在哪儿呢
+      - [诚园](domitary)怎么走
+      - [正园](domitary)在哪儿呢
+      - [正园](domitary)怎么走
+      - [修园](domitary)在哪儿呢
+      - [修园](domitary)怎么走
+      - [齐园](domitary)在哪儿呢
+      - [齐园](domitary)怎么走
+      - [治园](domitary)在哪儿呢
+      - [治园](domitary)怎么走
+      - [平园](domitary)在哪儿呢
+      - [平园](domitary)怎么走
+      - [留园](domitary)在哪儿呢
+      - [留园](domitary)怎么走
+      - [青年教师公寓](domitary)在哪儿呢
+      - [青年教师公寓](domitary)怎么走
+      - 怎么走呢
+      - 怎么去呢
+      - 去那儿怎么走
+      - 怎么到那儿去
+      - 路线呢
+      - 到那儿去怎么走

@@ -8,10 +8,30 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - stop
+  - query_weather
+  - ask_again
+  - query_domitary
+  - query_domitary_route
+
+entities:
+  - city
+  - domitary
+
+slots:
+  city:
+    type: any
+  domitary:
+    type: text
+
+
+actions:
+  - action_query_weather
+  - action_navigate_domitary
 
 responses:
   utter_greet:
-  - text: "嘿，最近怎么样呀？"
+  - text: "你好呀~"
 
   utter_cheer_up:
   - text: "让我们来庆祝一下！"
@@ -28,7 +48,11 @@ responses:
   - text: "拜"
 
   utter_iamabot:
-  - text: "我是小天，一个能帮助你的机器人🤖"
+  - text: "我是小天，一个能帮你了解校园、医疗等问题的机器人"
+
+
+  utter_query_domitary:
+  - text: "天大一共有十个宿舍区，分别是格园、知园、诚园、正园、修园、齐园、治园、平园、留园和青年教师公寓"
 
   utter_default:
   - text: "不好意思，你这个问题太高深啦，我暂时还回答不上来，我会继续加油的"

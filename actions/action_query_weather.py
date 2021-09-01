@@ -46,6 +46,8 @@ class ActionQueryWeather(Action):
                   domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         user_message = tracker.latest_message.get("text")
+        # print(tracker.slots)
+
         province, city = cpca.transform([user_message]).loc[0, ["省", "市"]]
         city = province if city in ["市辖区", None] else city
 
@@ -78,6 +80,7 @@ class ActionQueryWeather(Action):
         res = (await get(WEATHER_URL, params=params))["now"]
 
         return f"{res['text']} 风向: {res['windDir']}\n温度: {res['temp']}摄氏度\n体感温度：{res['feelsLike']}摄氏度"
+
 
 
 if __name__ == "__main__":

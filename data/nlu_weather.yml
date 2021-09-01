@@ -1,0 +1,23 @@
+version: "2.0"
+
+nlu:
+  - intent: query_weather
+    examples: |
+      - [天津]{"entity": "city"}天气如何
+      - [天津]{"entity": "city"}的天气怎样
+      - 帮我查一下[北京]{"entity": "city"}的天气
+      - 查一下[北京]{"entity": "city"}的天气
+      - [济南]{"entity": "city"}今天冷不冷
+      - [青岛]{"entity": "city"}今天热不热
+      - 天气查询
+      - 天气
+      - 查一下天气
+
+  - intent: ask_again
+    examples: |
+      - [青岛](city)呢
+      - 那[济南](city)呢
+      - [天津](city)如何呢
+      - [北京](city)怎样呢
+      - 那[沈阳](city)如何呢
+      - 那[太原](city)怎样呢
