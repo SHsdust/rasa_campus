@@ -1,6 +1,9 @@
 version: "2.0"
 
 intents:
+  - inform
+  - action_restart
+  - action_session_start
   - greet
   - goodbye
   - affirm
@@ -13,21 +16,126 @@ intents:
   - ask_again
   - query_domitary
   - query_domitary_route
+  - book_room
+  - query_book_room
+  - query_user_book_room
+
 
 entities:
   - city
   - domitary
+  - room_id
+  - time
+  - GPE
 
 slots:
+  time:
+    type: text
+    influence_conversation: false
+  start_time:
+    type: text
+    influence_conversation: false
+  end_time:
+    type: text
+    influence_conversation: false
   city:
     type: any
   domitary:
     type: text
+  room_start_time:
+    type: text
+    influence_conversation: false
+  room_end_time:
+    type: text
+    influence_conversation: false
+  room_id:
+    type: text
+    influence_conversation: false
+    auto_fill: False
+  room_text:
+    type: text
+    influence_conversation: false
+  room_confirm:
+    type: text
+    influence_conversation: false
+
+
+
+forms:
+  book_room_form:
+    required_slots:
+      room_start_time:
+        - type: from_entity
+          entity: time
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+
+      room_end_time:
+        - type: from_entity
+          entity: time
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+      room_id:
+        - type: from_entity
+          entity: room_id
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+
+      room_text:
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+            - deny
+            - affirm
+            - out_of_scope
+            - nlu_fallback
+      room_confirm:
+        - type: from_intent
+          intent: affirm
+          value: yes
+        - type: from_intent
+          intent: deny
+          value: no
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+  query_book_room_form:
+    required_slots:
+      room_start_time:
+        - type: from_entity
+          entity: time
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+      room_end_time:
+        - type: from_entity
+          entity: time
+        - type: from_text
+          intent:
+            - inform
+            - book_room_form
+
 
 
 actions:
+  - action_restart
   - action_query_weather
   - action_navigate_domitary
+  - action_book_room
+  - validate_book_room_form
+  - action_query_book_room
+  - validate_query_book_room_form
+  - action_query_user_book_room
+
 
 responses:
   utter_greet:
@@ -55,7 +163,31 @@ responses:
   - text: "天大一共有十个宿舍区，分别是格园、知园、诚园、正园、修园、齐园、治园、平园、留园和青年教师公寓"
 
   utter_default:
+  - text: "王士权是大傻子"
   - text: "不好意思，你这个问题太高深啦，我暂时还回答不上来，我会继续加油的"
+
+  utter_ask_room_start_time:
+  - text: 请输入会议室开始时间？
+  utter_ask_room_end_time:
+  - text: 请输入会议室结束时间？
+  utter_ask_room_id:
+  - text: 您想预定哪一间会议室？
+  utter_ask_room_text:
+  - text: 请您取一个会议标题
+  utter_ask_room_confirm:
+  - text: "请您确认一下申请会议室信息：
+                       \n    会议开始时间: {room_start_time}
+                       \n    会议结束时间: {room_end_time}
+                       \n    会议房间号: {room_id}
+                       \n    会议标题: {room_text}
+                       \n是否确认?"
+    buttons:
+      - payload: /affirm
+        title: 是
+      - payload: /deny
+        title: 否
+
+
 
 
 

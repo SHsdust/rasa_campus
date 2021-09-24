@@ -1,0 +1,32 @@
+version: "2.0"
+
+stories:
+
+- story: ask book room
+  steps:
+    - intent: book_room
+    - action: book_room_form
+    - active_loop: book_room_form
+
+- story: submit form
+  steps:
+  - action: book_room_form
+  - active_loop: null
+  - action: action_book_room
+
+- story: query_book_room
+  steps:
+  - intent: query_book_room
+  - action: query_book_room_form
+  - active_loop: query_book_room_form
+
+- story: submit query_book_room_form
+  steps:
+  - action: query_book_room_form
+  - active_loop: null
+  - action: action_query_book_room
+
+- story: query_user_book_room
+  steps:
+  - intent: query_user_book_room
+  - action: action_query_user_book_room

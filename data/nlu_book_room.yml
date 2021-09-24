@@ -1,0 +1,35 @@
+version: "2.0"
+nlu:
+- intent: query_book_room
+  examples: |
+    - 有哪些会议室是空的
+    - 有哪些会议室是闲置的
+    - 有哪些会议室
+    - 可以使用哪些会议室
+    - 查询一下有哪些空会议室
+
+- intent: book_room
+  examples: |
+    - 预定会议
+    - 预定会议室
+    - 我想订会议室
+    - 我想预定下午两点到下午四点的[201](room_id)会议室
+    - 帮我预定一下下午两点的[202](room_id)会议室
+    - [403](room_id)会议室
+
+- intent: query_user_book_room
+  examples: |
+    - 查询我的会议室预定
+    - 查询我预定了哪些会议室
+    - 我预定了哪些会议室
+    - 我已经预定了哪些会议室
+
+- intent: inform
+  examples: |
+    - [明天](time)
+    - [今天下午](time)
+    - [101](room_id)
+    - 北京
+    - 天津
+    - 第一个
+    - 第二个
